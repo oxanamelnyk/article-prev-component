@@ -1,14 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 
-/* Colors */
 :root {
   --color-very-dark-grayish-blue: hsl(217, 19%, 35%);
   --color-desaturated-dark-blue: hsl(214, 17%, 51%);
   --color-grayish-blue: hsl(212, 23%, 69%);
   --color-light-grayish-blue: hsl(210, 46%, 95%);
   --color-white: #fff;
-
-  --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-default: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -19,7 +17,8 @@
 
 html,
 body {
-  height: 100%;
+  height: 100svh;
+  min-height: 100%;
   font-family: sans-serif;
 }
 
@@ -59,7 +58,7 @@ body {
   font-style: normal;
   font-size: 0.8125rem;
   background-color: var(--color-light-grayish-blue);
-  height: 100vh;
+  height: 100svh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -68,15 +67,16 @@ body {
 
 .section {
   margin: 0 auto;
-  height: 31.875rem;
-  width: 19.375rem;
+  height: clamp(28rem, 90vh, 31.875rem);
+  width: clamp(18rem, 90vw, 19.375rem);
 }
+
 .sr-only {
   position: absolute;
-  width: 0.0625rem;
-  height: 0.0625rem;
+  inline-size: 0.0625rem;
+  block-size: 0.0625rem;
   padding: 0;
-  margin: -0.0625rem;
+  margin-block-start: -0.0625rem;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -93,14 +93,14 @@ body {
 }
 
 .card-top img {
-  height: 12.375rem;
+  height: clamp(10rem, 30vh, 12.375rem);
   width: 100%;
   object-fit: cover;
   object-position: center right;
 }
 
 .card-content {
-  padding: 2.1875rem 1.875rem;
+  padding: 2.1875rem 1.875rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.9375rem;
@@ -111,6 +111,7 @@ body {
   font-weight: 700;
   color: var(--color-very-dark-grayish-blue);
 }
+
 .card-content p {
   line-height: 1.45;
   color: var(--color-desaturated-dark-blue);
@@ -139,8 +140,8 @@ body {
 
 .card-avatar {
   overflow: hidden;
-  width: 2.5rem;
-  height: 2.5rem;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
   border-radius: 3.125rem;
 }
 
@@ -156,13 +157,13 @@ body {
 }
 
 .card-bottom-data time {
-  margin-top: 0.125rem;
+  margin-block-start: 0.125rem;
   color: var(--color-grayish-blue);
 }
 
 .icon {
-  width: 1.875rem;
-  height: 1.875rem;
+  inline-size: 1.875rem;
+  block-size: 1.875rem;
   color: var(--color-very-dark-grayish-blue);
   background-color: var(--color-light-grayish-blue);
   border-radius: 6.25rem;
@@ -178,6 +179,7 @@ body {
   scale: 1.1;
   box-shadow: var(--shadow-default);
 }
+
 .icon--click {
   background-color: var(--color-desaturated-dark-blue);
   color: var(--color-light-grayish-blue);
@@ -212,7 +214,6 @@ body {
   color: var(--color-white);
 }
 
-/* Extra large devices (large desktops, 1440px and up) */
 @media (min-width: 90rem) {
   .section {
     margin: 0 auto;
@@ -234,14 +235,16 @@ body {
   .card-person--click {
     display: flex;
   }
+
   .card-bottom {
-    padding-bottom: 1.875rem;
+    padding-block-end: 1.875rem;
   }
 
   .card-bottom--click {
     background-color: var(--color-white);
-    padding-bottom: 1.875rem;
+    padding-block-end: 1.875rem;
   }
+
   .share-item {
     position: relative;
   }
@@ -249,40 +252,27 @@ body {
   .share-item:after {
     content: "";
     position: absolute;
-    bottom: -0.625rem;
-    left: 50%;
+    inset-block-end: -0.625rem;
+    inset-inline-start: 50%;
     transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 0.625rem solid transparent;
-    border-right: 0.625rem solid transparent;
-    border-top: 0.625rem solid var(--color-very-dark-grayish-blue);
+    inline-size: 0;
+    block-size: 0;
+    border-inline-start: 0.625rem solid transparent;
+    border-inline-end: 0.625rem solid transparent;
+    border-block-start: 0.625rem solid var(--color-very-dark-grayish-blue);
   }
 
   .share-item--click {
-    padding: 0.9375rem 0;
+    padding-block: 0.9375rem;
     border-radius: 0.625rem;
     display: flex;
     justify-content: center;
-    width: 13.75rem;
-    height: auto;
+    inline-size: 13.75rem;
+    block-size: auto;
     position: absolute;
-    bottom: 4.5625rem;
-    right: -3.9375rem;
+    inset-block-end: 4.5625rem;
+    inset-inline-end: -3.9375rem;
     z-index: 10;
     background-color: var(--color-very-dark-grayish-blue);
-  }
-}
-
-/* Accessibility: reduce motion */
-/* Needed for accessibility compliance */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
