@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+/* Colors */
+:root {
+  --color-very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --color-desaturated-dark-blue: hsl(214, 17%, 51%);
+  --color-grayish-blue: hsl(212, 23%, 69%);
+  --color-light-grayish-blue: hsl(210, 46%, 95%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 13px;
+  background-color: var(--color-light-grayish-blue);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: var(--color-desaturated-dark-blue);
+}
+
+.section {
+  margin: 0 auto;
+  height: 510px;
+  width: 310px;
+}
+.card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-top img {
+  height: 198px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 35px 30px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-content h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-very-dark-grayish-blue);
+}
+.card-content p {
+  line-height: 1.45;
+  color: var(--color-desaturated-dark-blue);
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px 20px 30px;
+  transition: 0.4s ease-in;
+}
+
+.card-bottom--click {
+  background-color: var(--color-very-dark-grayish-blue);
+}
+
+.card-person {
+  display: flex;
+  gap: 12px;
+}
+
+.card-person--click {
+  display: none;
+}
+
+.card-avatar {
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.card-bottom-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-bottom-data strong {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-very-dark-grayish-blue);
+}
+
+.card-bottom-data time {
+  margin-top: 2px;
+  color: var(--color-grayish-blue);
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  color: var(--color-very-dark-grayish-blue);
+  background-color: var(--color-light-grayish-blue);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scale: 1;
+  cursor: pointer;
+  transition: 0.1s ease-out;
+}
+
+.icon:hover {
+  scale: 1.1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.icon--click {
+  background-color: var(--color-desaturated-dark-blue);
+  color: var(--color-light-grayish-blue);
+}
+
+.share-item {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.share-item--click {
+  display: flex;
+}
+
+.share-item span {
+  color: var(--color-grayish-blue);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icons a i {
+  font-size: 20px;
+  color: #fff;
+}
+
+/* Extra large devices (large desktops, 1440px and up) */
+@media (min-width: 1440px) {
+  .section {
+    margin: 0 auto;
+    height: 278px;
+    width: 728px;
+    position: relative;
+  }
+
+  .card {
+    flex-direction: row;
+  }
+
+  .card-top img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .card-person--click {
+    display: flex;
+  }
+  .card-bottom {
+    padding-bottom: 30px;
+  }
+
+  .card-bottom--click {
+    background-color: #fff;
+    padding-bottom: 30px;
+  }
+  .share-item {
+    position: relative;
+  }
+
+  .share-item:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--color-very-dark-grayish-blue);
+  }
+
+  .share-item--click {
+    padding: 15px 0 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    width: 220px;
+    height: auto;
+    position: absolute;
+    bottom: 73px;
+    right: -63px;
+    z-index: 10;
+    background-color: var(--color-very-dark-grayish-blue);
+  }
+}
