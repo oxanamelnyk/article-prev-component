@@ -96,7 +96,7 @@ body {
   height: clamp(10rem, 30vh, 12.375rem);
   width: 100%;
   object-fit: cover;
-  object-position: center right;
+  object-position: center left;
 }
 
 .card-content {
