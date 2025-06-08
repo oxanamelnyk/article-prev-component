@@ -66,8 +66,8 @@ body {
 
 .section {
   margin: 0 auto;
-  height: 510px;
-  width: 310px;
+  height: 31.875rem;
+  width: 19.375rem;
 }
 .sr-only {
   position: absolute;
@@ -94,6 +94,7 @@ body {
   height: 198px;
   width: 100%;
   object-fit: cover;
+  object-position: center right;
 }
 
 .card-content {
@@ -117,7 +118,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px 20px 30px;
+  padding: 20px 30px;
   transition: 0.4s ease-in;
 }
 
@@ -213,8 +214,8 @@ body {
 @media (min-width: 90rem) {
   .section {
     margin: 0 auto;
-    height: 278px;
-    width: 728px;
+    height: 17.375rem;
+    width: 45.5rem;
     position: relative;
   }
 
@@ -268,5 +269,17 @@ body {
     right: -63px;
     z-index: 10;
     background-color: var(--color-very-dark-grayish-blue);
+  }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -3,16 +3,21 @@ const shareContent = document.querySelector("#share-content");
 const shareLinks = shareContent.querySelectorAll("a");
 
 const handleShareBtn = () => {
-  const expanded = shareButton.getAttribute("aria-expanded") === "true";
-  const isHidden = expanded;
+  const isExpanded = shareButton.getAttribute("aria-expanded") === "true";
+  const newState = !isExpanded;
 
   // Update aria attributes
-  shareButton.setAttribute("aria-expanded", String(!expanded));
-  shareContent.setAttribute("aria-hidden", String(isHidden));
+  shareButton.setAttribute("aria-expanded", String(newState));
+
+  if (newState) {
+    shareContent.removeAttribute("aria-hidden");
+  } else {
+    shareContent.setAttribute("aria-hidden", "true");
+  }
 
   // Update focusability
   shareLinks.forEach((link) => {
-    link.setAttribute("tabindex", isHidden ? "-1" : "0");
+    link.setAttribute("tabindex", newState ? "0" : "-1");
   });
 
   // Toggle classes
